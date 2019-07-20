@@ -871,11 +871,6 @@ var vm = new Vue({
         },
         activeGraph(time) {
             node_list = this.active_schedule[time];
-            if (typeof (node_list) != "undefined") {
-                node_list.forEach(function (d) {
-                    d3.select('#node_' + d).style('fill', '#00ffff');
-                })
-            }
             if (time >= 1) {
                 last_node_list = this.active_schedule[time - 1];
                 if (typeof (last_node_list) != "undefined") {
@@ -883,6 +878,11 @@ var vm = new Vue({
                         d3.select('#node_' + d).style('fill', '#ff4500');
                     })
                 }
+            }
+            if (typeof (node_list) != "undefined") {
+                node_list.forEach(function (d) {
+                    d3.select('#node_' + d).style('fill', '#00ffff');
+                })
             }
         },
     }
